@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inicio de Sesión</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styli.css">
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="vidios/video2.mp4" type="video/mp4">
+        Tu navegador no soporta la etiqueta de video.
+    </video>
+    <div class="login-contenedor">
+        <h2>Iniciar Sesión</h2>
+        <form onsubmit="return redirigirPagina()">
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" placeholder="Ingrese su nombre de usuario">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingrese su contraseña">
+
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+    </div>
+
+    <script>
+        function redirigirPagina() {
+            // Aquí puedes agregar la lógica para verificar las credenciales del usuario
+            // Por ahora, simplemente redirigimos a una página de bienvenida
+            window.location.href = "index.html"; // Reemplaza "Conexion/index.html" con la URL de la página a la que deseas redirigir
+            return false; 
+        }
+    </script>
+</body>
+</html>

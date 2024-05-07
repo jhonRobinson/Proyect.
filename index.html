@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="estilo.css">
+    </head>
+    <body>
+        <video autoplay muted loop>
+            <source src="vidios/video4.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        <div class="contenedor">
+            <h1>FIGURAS PLANAS DE AREAS</h1>
+            <div class="section">
+                <h2>Area del Circulo</h2>
+                <label for="radius">Radio:</label>
+                <input type="text" id="radius" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese radio">
+                <button onclick="calcularAreaCirculo()">Calcular Area</button>
+                <p id="resultCirculo"></p>  
+                <button onclick="calcularPerimetroCirculo()">Calcular Pèrimetro</button>
+                <p id="resultPerimetroCirculo"></p>
+            </div>
+
+            <div class="section">
+                <h2>Area del Triangulo</h2>
+                <label for="base">Base:</label>
+                <input type="text" id="base" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese base">
+                <label for="altura">Altura:</label>
+                <input type="text" id="altura" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese altura">
+                <button onclick="calcularAreaTriangulo()">Calcular Area</button>
+                <p id="resultTriangulo"></p>
+                <button onclick="calcularPerimetroTriangulo()">Calcular Perimetro</button>
+                <p id="resultPerimetroTriangulo"></p>
+            </div>
+
+            <div class="section">
+                <h2>Area del Cuadrado</h2>
+                <label for="lado">Lado:</label>
+                <input type="text" id="lado" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese lado">
+                <button onclick="calcularAreaCuadrado()">Calcular Area</button>
+                <p id="resultCuadrado"></p>
+                <button onclick="calcularPerimetroCuadrado()">Calcular Perimetro</button>
+                <p id="resultPerimetroCuadrado"></p>
+            </div>
+
+            <div class="section">
+                <h2>Area del Rectangulo</h2>
+                <label for="base">Base:</label>
+                <input type="text" id="base" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese base">
+                <label for="altura">Altura:</label>
+                <input type="text" id="altura" pattern="[0-9]*" oninput="validarNumero(this)" placeholder="Ingrese altura">
+                <button onclick="calcularAreaRectangulo()">Calcular Area</button>
+                <p id="resultRectangulo"></p>
+                <button onclick="calcularPerimetroRectangulo()">Calcular Perimetro</button>
+                <p id="resultPerimetroRectangulo"></p>
+            </div>
+        </div>
+        <div class="botonRegresar">
+            <button onclick="goBack()">Regresar</button>
+        </div>
+
+        <!-- Add Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <script>
+                function validarNumero(input) {
+                    input.value = input.value.replace(/[^\d]/g, ''); // Eliminar caracteres no numéricos
+                }
+                function calcularAreaCirculo() {
+                    const radius = parseFloat(document.getElementById('radius').value);
+                    if (!isNaN(radius) && radius > 0) {
+                        const area = Math.PI * radius * radius;
+                        document.getElementById('resultCirculo').innerText = `El área del círculo es: ${area.toFixed(2)} `;
+                    } else {
+                        document.getElementById('resultCirculo').innerText = 'Por favor, ingrese un "radio" válido.';
+                    }
+                }
+
+                function calcularAreaTriangulo() {
+                    const base = parseFloat(document.getElementById('base').value);
+                    const height = parseFloat(document.getElementById('altura').value);
+                    if (!isNaN(base) && base > 0 && !isNaN(height) && height > 0) {
+                        const area = (base * height) / 2;
+                        document.getElementById('resultTriangulo').innerText = `El área del triángulo es: ${area.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultTriangulo').innerText = 'Por favor, ingrese "base" y "altura" válidas.';
+                    }
+                }
+
+                function calcularAreaCuadrado() {
+                    const lado = parseFloat(document.getElementById('lado').value);
+                    if (!isNaN(lado) && lado > 0) {
+                        const area = lado * lado;
+                        document.getElementById('resultCuadrado').innerText = `El área del cuadrado es: ${area.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultCuadrado').innerText = 'Por favor, ingrese un "lado" válido.';
+                    }
+                }
+
+                function calcularAreaRectangulo() {
+                    const base = parseFloat(document.getElementById('base').value);
+                    const altura = parseFloat(document.getElementById('altura').value);
+                    if (!isNaN(base) && base > 0 && !isNaN(altura) && altura > 0) {
+                        const area = base * altura;
+                        document.getElementById('resultRectangulo').innerText = `El área del rectángulo es: ${area.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultRectangulo').innerText = 'Por favor, ingrese "base" y "altura" válidas.';
+                    }
+                }
+                function calcularPerimetroCirculo() {
+                    const radio = parseFloat(document.getElementById('radius').value);
+                    if (!isNaN(radio) && radio > 0) {
+                        const perimetro = 2 * Math.PI * radio;
+                        document.getElementById('resultPerimetroCirculo').innerText = `El perímetro del círculo es: ${perimetro.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultPerimetroCirculo').innerText = 'Por favor, ingrese un radio válido.';
+                    }
+                }
+
+                function calcularPerimetroTriangulo() {
+                    const base = parseFloat(document.getElementById('base').value);
+                    const altura = parseFloat(document.getElementById('altura').value);
+                    if (!isNaN(base) && base > 0 && !isNaN(altura) && altura > 0) {
+                        const lado1 = Math.sqrt(Math.pow(base / 2, 2) + Math.pow(altura, 2));
+                        const perimetro = base + 2 * lado1;
+                        document.getElementById('resultPerimetroTriangulo').innerText = `El perímetro del triángulo es: ${perimetro.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultPerimetroTriangulo').innerText = 'Por favor, ingrese base y altura válidas.';
+                    }
+                }
+
+                function calcularPerimetroCuadrado() {
+                    const lado = parseFloat(document.getElementById('lado').value);
+                    if (!isNaN(lado) && lado > 0) {
+                        const perimetro = 4 * lado;
+                        document.getElementById('resultPerimetroCuadrado').innerText = `El perímetro del cuadrado es: ${perimetro.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultPerimetroCuadrado').innerText = 'Por favor, ingrese un lado válido.';
+                    }
+                }
+
+                function calcularPerimetroRectangulo() {
+                    const base = parseFloat(document.getElementById('base').value);
+                    const altura = parseFloat(document.getElementById('altura').value);
+                    if (!isNaN(base) && base > 0 && !isNaN(altura) && altura > 0) {
+                        const perimetro = 2 * (altura + base);
+                        document.getElementById('resultPerimetroRectangulo').innerText = `El perímetro del Rectángulo es: ${perimetro.toFixed(2)}`;
+                    } else {
+                        document.getElementById('resultPerimetroRectangulo').innerText = 'Por favor, ingrese "base" y "altura" válidas.';
+                    }
+                }
+
+                function goBack() {
+                    window.history.back();
+                }
+        </script>
+    </body>
+</html>
